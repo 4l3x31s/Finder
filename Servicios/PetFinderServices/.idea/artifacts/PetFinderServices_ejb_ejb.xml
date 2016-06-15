@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="ejb-jar" name="PetFinderServices-ejb:ejb">
+    <output-path>$PROJECT_DIR$/ejb/target</output-path>
+    <root id="archive" name="PetFinderServices-ejb.jar">
+      <element id="artifact" artifact-name="PetFinderServices-ejb:ejb exploded" />
+    </root>
+  </artifact>
+</component>

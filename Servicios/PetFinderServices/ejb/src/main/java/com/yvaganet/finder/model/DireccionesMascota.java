@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Alexeis
+ * @author acarrillo
  */
 @Entity
 @Table(name = "direcciones_mascota")

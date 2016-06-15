@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="PetFinderServices-web:war">
+    <output-path>$PROJECT_DIR$/web/target</output-path>
+    <root id="archive" name="PetFinderServices-web.war">
+      <element id="artifact" artifact-name="PetFinderServices-web:war exploded" />
+    </root>
+  </artifact>
+</component>

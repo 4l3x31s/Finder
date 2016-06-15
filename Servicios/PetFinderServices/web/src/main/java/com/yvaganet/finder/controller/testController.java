@@ -33,7 +33,7 @@ public class testController {
         persona.setCiudad("La Paz");
         persona.setDireccionPersona("Obrajes Calle 22");
         persona.setEmail("panthon.six@gmail.com");
-        persona.setEstado(true);
+        persona.setEstado(0);
         persona.setLatitud("1.515151");
         persona.setLongitud("1.121515");
         persona.setNombrePersona("Alexeis");

@@ -52,7 +52,7 @@ CREATE TABLE Persona
 	direccion_persona TEXT,
 	latitud VARCHAR(150) NOT NULL,
 	longitud VARCHAR(150) NOT NULL,
-	estado BOOL NOT NULL,
+	estado INTEGER NOT NULL,
 	PRIMARY KEY (id_persona)
 
 ) 

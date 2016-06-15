@@ -77,7 +77,20 @@
          <scope>provided</scope>
       </dependency>
 
-       <!-- JSR-303 (Bean Validation) Implementation -->
+      <dependency>
+         <groupId>com.google.code.gson</groupId>
+         <artifactId>gson</artifactId>
+         <version>2.6.2</version>
+      </dependency>
+      <!-- http://mvnrepository.com/artifact/javax.mail/mail -->
+      <dependency>
+         <groupId>javax.mail</groupId>
+         <artifactId>mail</artifactId>
+         <version>1.4</version>
+      </dependency>
+
+
+      <!-- JSR-303 (Bean Validation) Implementation -->
        <!-- Provides portable constraints such as @Email -->
        <!-- Hibernate Validator is shipped in JBoss AS 7 -->
        <dependency>

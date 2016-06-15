@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Alexeis
+ * @author acarrillo
  */
 @Entity
 @Table(name = "persona")
@@ -95,7 +95,7 @@ public class Persona implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "estado")
-    private boolean estado;
+    private int estado;
 
     public Persona() {
     }
@@ -104,7 +104,7 @@ public class Persona implements Serializable {
         this.idPersona = idPersona;
     }
 
-    public Persona(Long idPersona, String usuario, String password, String email, String nombrePersona, String apellidoPersona, String ciudad, String latitud, String longitud, boolean estado) {
+    public Persona(Long idPersona, String usuario, String password, String email, String nombrePersona, String apellidoPersona, String ciudad, String latitud, String longitud, int estado) {
         this.idPersona = idPersona;
         this.usuario = usuario;
         this.password = password;
@@ -197,11 +197,11 @@ public class Persona implements Serializable {
         this.longitud = longitud;
     }
 
-    public boolean getEstado() {
+    public int getEstado() {
         return estado;
     }
 
-    public void setEstado(boolean estado) {
+    public void setEstado(int estado) {
         this.estado = estado;
     }
 
