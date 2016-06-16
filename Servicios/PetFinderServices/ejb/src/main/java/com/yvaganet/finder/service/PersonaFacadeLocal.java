@@ -29,5 +29,9 @@ public interface PersonaFacadeLocal {
     List<Persona> findRange(int[] range);
 
     int count();
+
+    Persona findPersonaByUser(String user);
+
+    Persona findUserByUserPass(String user, String pass);
     
 }

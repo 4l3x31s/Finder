@@ -3,27 +3,28 @@ package com.yvaganet.finder.objects;
 /**
  * Created by Alexeis on 15 jun 2016.
  */
-public class RequestMascotaPerdida {
-    private float latitud;
-    private float longitud;
+public class RequestMascotaPerdida extends RequestGlobal {
+    private String latitud;
+    private String longitud;
     private String direccion;
     private String comentario;
     private String imagen;
     private String contacto;
+    private String qrMascota;
 
-    public float getLatitud() {
+    public String getLatitud() {
         return latitud;
     }
 
-    public void setLatitud(float latitud) {
+    public void setLatitud(String latitud) {
         this.latitud = latitud;
     }
 
-    public float getLongitud() {
+    public String getLongitud() {
         return longitud;
     }
 
-    public void setLongitud(float longitud) {
+    public void setLongitud(String longitud) {
         this.longitud = longitud;
     }
 
@@ -57,5 +58,13 @@ public class RequestMascotaPerdida {
 
     public void setContacto(String contacto) {
         this.contacto = contacto;
+    }
+
+    public String getQrMascota() {
+        return qrMascota;
+    }
+
+    public void setQrMascota(String qrMascota) {
+        this.qrMascota = qrMascota;
     }
 }

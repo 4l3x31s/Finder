@@ -9,6 +9,7 @@ import com.yvaganet.finder.model.Persona;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 /**
  *
@@ -28,5 +29,19 @@ public class PersonaFacade extends AbstractFacade<Persona> implements PersonaFac
     public PersonaFacade() {
         super(Persona.class);
     }
-    
+
+    @Override
+    public Persona findPersonaByUser(String user) {
+        Query query = em.createQuery("SELECT m FROM Persona m WHERE m.usuario = :user order by 1 desc");
+        query.setParameter("user",user);
+        return (Persona)query.getSingleResult();
+    }
+
+    @Override
+    public Persona findUserByUserPass(String user, String pass) {
+        Query query = em.createQuery("SELECT m FROM Persona m WHERE m.usuario = :user AND m.password = :pass order by 1 desc");
+        query.setParameter("user",user);
+        query.setParameter("pass",pass);
+        return (Persona)query.getSingleResult();
+    }
 }

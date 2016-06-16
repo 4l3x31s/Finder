@@ -8,10 +8,14 @@ import javax.ws.rs.core.Response;
 
 import com.google.gson.Gson;
 import com.yvaganet.finder.model.Persona;
+import com.yvaganet.finder.objects.RequestLogin;
 import com.yvaganet.finder.objects.RequestUser;
 import com.yvaganet.finder.objects.ResponseGlobal;
+import com.yvaganet.finder.objects.ResponseLogin;
 import com.yvaganet.finder.service.PersonaFacadeLocal;
 import com.yvaganet.finder.util.MailUtil;
+import com.yvaganet.finder.util.SecurityUtil;
+import com.yvaganet.finder.util.UtilToken;
 
 @Path("/user")
 @RequestScoped
@@ -37,7 +41,9 @@ public class UserService {
 	        persona.setLatitud(request.getLatitud());
 	        persona.setLongitud(request.getLongitud());
 	        persona.setNombrePersona(request.getNombre());
-	        persona.setPassword(request.getPass());
+            SecurityUtil securityUtil = new SecurityUtil();
+            String pass = securityUtil.encriptar(request.getPass());
+	        persona.setPassword(pass);
 	        persona.setUsuario(request.getUser());
 			context.create(persona);
 			responseGlobal = new ResponseGlobal();
@@ -73,5 +79,39 @@ public class UserService {
 		}
 		Gson gson = new Gson();
 		return Response.ok(gson.toJson(response)).build();
+	}
+	@POST
+	@Path("/login")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response iniciarSession(RequestLogin requestLogin){
+        ResponseLogin responseLogin;
+        Gson gson;
+        try{
+            SecurityUtil securityUtil = new SecurityUtil();
+            String pass = securityUtil.encriptar(requestLogin.getPass());
+            Persona respuestaPersona = context.findUserByUserPass(requestLogin.getUser(), pass);
+            if(respuestaPersona!=null){
+                String authToken = UtilToken.getToken();
+                responseLogin = new ResponseLogin();
+                responseLogin.setMensaje("Inicio de session correcto.");
+                responseLogin.setEstado(true);
+                responseLogin.setToken(authToken);
+                gson = new Gson();
+                return Response.ok(gson.toJson(responseLogin)).build();
+            }else{
+                responseLogin = new ResponseLogin();
+                responseLogin.setMensaje("Usuario o contraseña incorrectos.");
+                responseLogin.setEstado(false);
+                gson = new Gson();
+                return Response.status(401).entity(gson.toJson(responseLogin)).build();
+            }
+        }catch (Exception ex){
+            responseLogin = new ResponseLogin();
+            responseLogin.setEstado(false);
+            responseLogin.setMensaje("Error al iniciar la sessión.");
+            gson = new Gson();
+            return Response.status(401).entity(gson.toJson(responseLogin)).build();
+        }
 	}
 }

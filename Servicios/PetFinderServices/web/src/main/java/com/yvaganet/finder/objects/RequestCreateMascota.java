@@ -3,7 +3,7 @@ package com.yvaganet.finder.objects;
 /**
  * Created by Alexeis on 15 jun 2016.
  */
-public class RequestCreateMascota {
+public class RequestCreateMascota extends RequestGlobal {
     private String usuario;
     private String nom;
     private String genero;
