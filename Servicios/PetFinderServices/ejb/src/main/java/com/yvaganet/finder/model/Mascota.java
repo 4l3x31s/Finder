@@ -23,7 +23,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author acarrillo
+ * @author Alexeis
  */
 @Entity
 @Table(name = "mascota")
@@ -78,7 +78,7 @@ public class Mascota implements Serializable {
     @Column(name = "color")
     private String color;
     @Column(name = "estado")
-    private Boolean estado;
+    private Integer estado;
 
     public Mascota() {
     }
@@ -166,11 +166,11 @@ public class Mascota implements Serializable {
         this.color = color;
     }
 
-    public Boolean getEstado() {
+    public Integer getEstado() {
         return estado;
     }
 
-    public void setEstado(Boolean estado) {
+    public void setEstado(Integer estado) {
         this.estado = estado;
     }
 

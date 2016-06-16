@@ -44,7 +44,11 @@ public class UserService {
 			responseGlobal.setMensaje("El usuario fue registrado correctamente.");
 			responseGlobal.setEstado(true);
 			gson = new Gson();
-			return Response.ok(gson.toJson(responseGlobal)).build();
+			String cadenaGson = gson.toJson(responseGlobal);
+			MailUtil mailUtil = new MailUtil();
+			mailUtil.enviarMail(request.getEmail());
+
+			return Response.ok(cadenaGson).build();
 		}catch(Exception ex){
 			gson = new Gson();
 			responseGlobal = new ResponseGlobal();

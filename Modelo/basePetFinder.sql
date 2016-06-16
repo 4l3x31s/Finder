@@ -14,6 +14,9 @@ CREATE TABLE direcciones_mascota
 	direccion TEXT,
 	comentario TEXT,
 	fecha DATETIME NOT NULL,
+	imagen TEXT,
+	numero_contacto VARCHAR(50),
+	estado INTEGER,
 	PRIMARY KEY (id_direccion),
 	KEY (id_mascota)
 
@@ -32,7 +35,7 @@ CREATE TABLE Mascota
 	codigo_mascota VARCHAR(150),
 	imagen TEXT,
 	color TEXT,
-	estado BOOL,
+	estado INTEGER,
 	PRIMARY KEY (id_mascota),
 	KEY (id_persona)
 

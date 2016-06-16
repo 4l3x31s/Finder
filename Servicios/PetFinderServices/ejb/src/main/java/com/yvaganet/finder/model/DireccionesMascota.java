@@ -26,7 +26,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author acarrillo
+ * @author Alexeis
  */
 @Entity
 @Table(name = "direcciones_mascota")
@@ -37,7 +37,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "DireccionesMascota.findByIdMascota", query = "SELECT d FROM DireccionesMascota d WHERE d.idMascota = :idMascota"),
     @NamedQuery(name = "DireccionesMascota.findByLatitud", query = "SELECT d FROM DireccionesMascota d WHERE d.latitud = :latitud"),
     @NamedQuery(name = "DireccionesMascota.findByLongitud", query = "SELECT d FROM DireccionesMascota d WHERE d.longitud = :longitud"),
-    @NamedQuery(name = "DireccionesMascota.findByFecha", query = "SELECT d FROM DireccionesMascota d WHERE d.fecha = :fecha")})
+    @NamedQuery(name = "DireccionesMascota.findByFecha", query = "SELECT d FROM DireccionesMascota d WHERE d.fecha = :fecha"),
+    @NamedQuery(name = "DireccionesMascota.findByNumeroContacto", query = "SELECT d FROM DireccionesMascota d WHERE d.numeroContacto = :numeroContacto"),
+    @NamedQuery(name = "DireccionesMascota.findByEstado", query = "SELECT d FROM DireccionesMascota d WHERE d.estado = :estado")})
 public class DireccionesMascota implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -71,6 +73,15 @@ public class DireccionesMascota implements Serializable {
     @Column(name = "fecha")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fecha;
+    @Lob
+    @Size(max = 65535)
+    @Column(name = "imagen")
+    private String imagen;
+    @Size(max = 50)
+    @Column(name = "numero_contacto")
+    private String numeroContacto;
+    @Column(name = "estado")
+    private Integer estado;
 
     public DireccionesMascota() {
     }
@@ -140,6 +151,30 @@ public class DireccionesMascota implements Serializable {
 
     public void setFecha(Date fecha) {
         this.fecha = fecha;
+    }
+
+    public String getImagen() {
+        return imagen;
+    }
+
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    public String getNumeroContacto() {
+        return numeroContacto;
+    }
+
+    public void setNumeroContacto(String numeroContacto) {
+        this.numeroContacto = numeroContacto;
+    }
+
+    public Integer getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Integer estado) {
+        this.estado = estado;
     }
 
     @Override
