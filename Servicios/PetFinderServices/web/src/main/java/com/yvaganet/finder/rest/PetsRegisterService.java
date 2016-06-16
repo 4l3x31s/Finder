@@ -10,6 +10,7 @@ import com.yvaganet.finder.objects.ResponseGlobal;
 import com.yvaganet.finder.objects.ResponseRegisterPet;
 import com.yvaganet.finder.service.MascotaFacadeLocal;
 import com.yvaganet.finder.service.PersonaFacadeLocal;
+import com.yvaganet.finder.util.ConstantesUtil;
 import com.yvaganet.finder.util.SecurityUtil;
 
 import javax.enterprise.context.RequestScoped;
@@ -20,6 +21,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+
 import java.math.BigInteger;
 
 /**
@@ -48,6 +50,7 @@ public class PetsRegisterService {
                 if (request.getImagen() != null) {
                     Persona personaObj = personaFacadeLocal.findPersonaByUser(request.getUsuario());
                     SecurityUtil securityUtil = new SecurityUtil();
+                    securityUtil.addKey(ConstantesUtil.key);
                     String hashMascota = securityUtil.encriptar(request.getNom() + request.getGenero() + personaObj.getUsuario());
                     Mascota mascota = new Mascota();
                     mascota.setImagen(request.getImagen());

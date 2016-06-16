@@ -13,6 +13,7 @@ import com.yvaganet.finder.objects.RequestUser;
 import com.yvaganet.finder.objects.ResponseGlobal;
 import com.yvaganet.finder.objects.ResponseLogin;
 import com.yvaganet.finder.service.PersonaFacadeLocal;
+import com.yvaganet.finder.util.ConstantesUtil;
 import com.yvaganet.finder.util.MailUtil;
 import com.yvaganet.finder.util.SecurityUtil;
 import com.yvaganet.finder.util.UtilToken;
@@ -42,7 +43,9 @@ public class UserService {
 	        persona.setLongitud(request.getLongitud());
 	        persona.setNombrePersona(request.getNombre());
             SecurityUtil securityUtil = new SecurityUtil();
+            securityUtil.addKey(ConstantesUtil.key);
             String pass = securityUtil.encriptar(request.getPass());
+            System.out.println("Pass: " + pass);
 	        persona.setPassword(pass);
 	        persona.setUsuario(request.getUser());
 			context.create(persona);

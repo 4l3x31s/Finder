@@ -65,7 +65,7 @@ CREATE TABLE persona
 (
 	id_persona BIGINT NOT NULL AUTO_INCREMENT,
 	usuario VARCHAR(50) NOT NULL,
-	password VARCHAR(50) NOT NULL,
+	password TEXT NOT NULL,
 	email VARCHAR(50) NOT NULL,
 	nombre_persona VARCHAR(150) NOT NULL,
 	apellido_persona VARCHAR(150) NOT NULL,
