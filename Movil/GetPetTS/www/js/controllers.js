@@ -94,4 +94,40 @@ angular.module('starter.controllers', [])
             // An error occured. Show a message to the user
         });
     };
+})
+    .controller('RepPetLostCtrl', function ($scope, $state, $cordovaGeolocation, $cordovaBarcodeScanner) {
+    var options = { timeout: 10000, enableHighAccuracy: true };
+    $cordovaGeolocation.getCurrentPosition(options).then(function (position) {
+        var latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        var mapOptions = {
+            center: latLng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        $scope.map = new google.maps.Map(document.getElementById("map2"), mapOptions);
+        google.maps.event.addListenerOnce($scope.map, 'idle', function () {
+            var marker = new google.maps.Marker({
+                map: $scope.map,
+                animation: google.maps.Animation.DROP,
+                position: latLng
+            });
+            var infoWindow = new google.maps.InfoWindow({
+                content: "Here I am!"
+            });
+            google.maps.event.addListener(marker, 'click', function () {
+                infoWindow.open($scope.map, marker);
+            });
+        });
+    }, function (error) {
+        console.log("Could not get location");
+    });
+    $scope.scanBarcode = function () {
+        $cordovaBarcodeScanner.scan().then(function (imageData) {
+            alert(imageData.text);
+            console.log("Barcode Format -> " + imageData.format);
+            console.log("Cancelled -> " + imageData.cancelled);
+        }, function (error) {
+            console.log("An error happened -> " + error);
+        });
+    };
 });

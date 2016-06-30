@@ -49,6 +49,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
+        .state('app.pet-card', {
+        url: '/pet-card',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/pet-card.html'
+            }
+        }
+    })
         .state('app.maps', {
         url: '/maps',
         views: {
@@ -58,26 +66,35 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
             }
         }
     })
-        .state('app.browse', {
-        url: '/browse',
+        .state('app.pet-register', {
+        url: '/pet-register',
         views: {
             'menuContent': {
-                templateUrl: 'templates/browse.html',
+                templateUrl: 'templates/pet-register.html',
                 controller: 'BrowseCtrl'
             }
         }
     })
-        .state('app.playlists', {
-        url: '/playlists',
+        .state('app.pet-report', {
+        url: '/pet-report',
         views: {
             'menuContent': {
-                templateUrl: 'templates/playlists.html',
+                templateUrl: 'templates/pet-report.html',
                 controller: 'PlaylistsCtrl'
             }
         }
     })
+        .state('app.report-pet-lost', {
+        url: '/report-pet-lost',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/report-pet-lost.html',
+                controller: 'RepPetLostCtrl'
+            }
+        }
+    })
         .state('app.single', {
-        url: '/playlists/:playlistId',
+        url: '/pet-report/:playlistId',
         views: {
             'menuContent': {
                 templateUrl: 'templates/playlist.html',
@@ -86,5 +103,5 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
     });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/app/playlists');
+    $urlRouterProvider.otherwise('/app/pet-report');
 });

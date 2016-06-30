@@ -1,0 +1,43 @@
+<ion-view view-title="Registrar Mascota">
+  <ion-content>
+    <div class="item item-divider">
+      Datos Mascota
+    </div>
+    <label class="item item-input item-floating-label">
+      <span class="input-label labels-input">Nombre Mascota</span>
+      <input type="text" placeholder="Nombre Mascota">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label labels-input">Género</span>
+      <input type="text" placeholder="Género">
+    </label>
+    <div class="item item-divider">
+      Datos Mascota
+    </div>
+    <label class="item item-input item-floating-label">
+      <span class="input-label labels-input">Raza</span>
+      <input type="text" placeholder="Raza">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label labels-input">Tipo</span>
+      <input type="text" placeholder="Tipo: Ej(Gato)">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label labels-input">Color</span>
+      <input type="text" placeholder="Color">
+    </label>
+    <div class="item item-divider">
+      Tomar Foto Mascota
+    </div>
+    <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}">
+    <img ng-show="imgURI === undefined" ng-src="http://placehold.it/300x300">
+    <button class="btn-floating btn-large waves-effect waves-light button-positive" ng-click="takePicture()">
+      <i class="icon ion-camera"></i>
+    </button>
+
+    <button class="waves-effect waves-light btn button button-full button-positive ">
+      Registrar Mascota
+    </button>
+    <br />
+  </ion-content>
+</ion-view>
